@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Categoria</th>
+      <th scope="col">Sexo</th>
+      <th scope="col">Numero jugadores</th>
+      <th scope="col">Editar</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for equipo in equipos %}
+        <tr>
+            <th scope="row">{{equipo.id}}</th>
+            <td>{{equipo.categoria}}</td>
+            <td>{{equipo.sexo}}</td>
+            <td>{{equipo.numjugadores}}</td>
+            <td>
+            <a href="{{ path('nuevoEquipo', {'id': equipo.id}) }}"><i class="fas fa-edit"></i></a>
+            <a href="{{ path('borrarEquipo', {'id': equipo.id}) }}"><i class="fas fa-trash-alt"></i></a>
+            </td>
+        </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<a class="btn btn-primary" href="{{ path('nuevoEquipo') }}" role="button">Nuevo Equipo</a>
+{% endblock %}

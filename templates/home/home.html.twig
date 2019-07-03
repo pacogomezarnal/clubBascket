@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+  {% set fila = 0 %}
+  <!--FILA 1-->
+  {% for resultado in resultados %}
+  {% if fila % 3 == 0 %}<div class="row fila">{% endif %}
+    <div class="col-sm">
+        <!--TARJETA 1-->
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Resultado</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{resultado.cancha}}</h6>
+                <p class="card-text">{{resultado.puntoslocal}} - {{resultado.puntosvisitante}}</p>
+                <a href="#" class="card-link">Detalle</a>
+                {{fila % 3}}
+            </div>
+        </div>
+    </div>
+  {% if fila % 3 == 2 %}</div><!--FILA 1-->{% endif %}
+  {% set fila = fila + 1 %}
+  {% endfor %}
+  {% if fila % 3 < 2 %}</div><!--FILA 1-->{% endif %}
+ 
+
+{% endblock %}

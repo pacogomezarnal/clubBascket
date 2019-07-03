@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Resultado{% endblock %}
+
+{% block body %}
+    <h1>Resultado</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ resultado.id }}</td>
+            </tr>
+            <tr>
+                <th>Puntoslocal</th>
+                <td>{{ resultado.puntoslocal }}</td>
+            </tr>
+            <tr>
+                <th>Puntosvisitante</th>
+                <td>{{ resultado.puntosvisitante }}</td>
+            </tr>
+            <tr>
+                <th>Fechapartido</th>
+                <td>{{ resultado.fechapartido ? resultado.fechapartido|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Cancha</th>
+                <td>{{ resultado.cancha }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('resultado_index') }}">back to list</a>
+
+    <a href="{{ path('resultado_edit', {'id': resultado.id}) }}">edit</a>
+
+    {{ include('resultado/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Puntoslocal</th>
+                <th>Puntosvisitante</th>
+                <th>Fechapartido</th>
+                <th>Cancha</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for resultado in resultados %}
+            <tr>
+                <td>{{ resultado.id }}</td>
+                <td>{{ resultado.puntoslocal }}</td>
+                <td>{{ resultado.puntosvisitante }}</td>
+                <td>{{ resultado.fechapartido ? resultado.fechapartido|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ resultado.cancha }}</td>
+                <td>
+                    <a href="{{ path('resultado_show', {'id': resultado.id}) }}">show</a>
+                    <a href="{{ path('resultado_edit', {'id': resultado.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('resultado_new') }}">Create new</a>
+{% endblock %}
